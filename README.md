@@ -17,23 +17,28 @@
 ---
 
 ## 📁 Структура проекта
-vpn-project/
-├── client/ # Клиентская часть (PyQt5 GUI)
-│ ├── main.py
-│ ├── wg_controller.py
-│ ├── config_manager.py
-│ ├── ui/
-│ │ ├── main_window.py
-│ │ └── settings_dialog.py
-│ └── configs/
-│ └── client.conf
-├── server/ # Серверная часть (Python + Flask)
-│ ├── api_server.py
-│ ├── wg_manager.py
-│ ├── key_manager.py
-│ └── configs/
-│ └── wg0.conf
-└── README.md
+
+**vpn-project/**
+
+client/
+- main.py
+- wg_controller.py
+- config_manager.py
+
+ui/
+- main_window.py
+- settings_dialog.py
+- configs/
+- client.conf
+
+server/
+- api_server.py
+- wg_manager.py
+- key_manager.py
+- configs/
+- wg0.conf
+
+README.md
 
 
 ---
