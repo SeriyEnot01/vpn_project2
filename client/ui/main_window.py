@@ -7,6 +7,7 @@ import platform
 
 
 class MainWindow(QMainWindow):
+    #Создаёт контроллер, менеджер конфигов, устанавливает и запускает окно
     def __init__(self):
         super().__init__()
         self.controller = WGController()
@@ -16,7 +17,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("VPN Client")
         self.setFixedSize(400, 550)
         self.init_ui()
-
+    
+    #Создаёт все виджеты
     def init_ui(self):
         layout = QVBoxLayout()
 
@@ -98,7 +100,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(container)
         self.log("VPN Client started")
         self.log(f"Server: 89.127.203.246")
-
+        
+    # Подключает VPN, меняет статус на "🟢 CONNECTED", блокирует CONNECT, активирует DISCONNECT
     def do_connect(self):
         self.log("Connecting to 89.127.203.246...")
         config_path = self.config_manager.get_config_path()
@@ -112,7 +115,8 @@ class MainWindow(QMainWindow):
             self.log("✓ Connected to VPN")
         else:
             self.log("✗ Failed to connect")
-
+            
+    #Отключает VPN, меняет статус на "⚪ DISCONNECTED", активирует CONNECT, блокирует DISCONNECT
     def do_disconnect(self):
         self.log("Disconnecting...")
         self.controller.disconnect()
@@ -122,7 +126,8 @@ class MainWindow(QMainWindow):
         self.btn_connect.setEnabled(True)
         self.btn_disconnect.setEnabled(False)
         self.log("✓ Disconnected")
-
+        
+    #Добавляет сообщение с временной меткой в область логов
     def log(self, msg):
         from datetime import datetime
         self.log_area.append(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
