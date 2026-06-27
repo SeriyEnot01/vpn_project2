@@ -66,4 +66,4 @@ def show_notification(title, message):
                           f'[System.Windows.Forms.MessageBox]::Show("{message}", "{title}")'],
                          check=False)
     except:
-        pass  # Если уведомление не работает, игнорируем
+        pass
